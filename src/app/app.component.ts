@@ -6,8 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  num : number = 0;
+
   OnClick(){
-    console.log("click");
+    this.num++;
   }
 
   title = 'kognitivny-test';
