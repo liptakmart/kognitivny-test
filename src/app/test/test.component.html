@@ -1,0 +1,29 @@
+<div fxLayout="column" fxLayoutAlign="none center" class="test-container">
+  <div fxLayout="row" fxLayoutAlign="space-around center" class="test-toolbar">
+    <button mat-raised-button (click)="startTest()" [disabled]="isStartButtonDisabled">Štart</button>
+    <div><strong>{{countdownTimerLabel}}</strong></div>
+    <button mat-raised-button color="warn" (click)="stopTest()" [disabled]="isStopButtonDisabled">Stop</button>
+  </div>
+  
+  <div fxLayout="row" fxLayoutAlign="center center" class="image-container">
+    <img *ngIf="currentImageSrc != ''" [src]="currentImageSrc" alt="image" class="test-image" (click)="imageClicked()">
+
+    <div *ngIf="isShowIntro">
+      <p style="text-align: center;">
+        Po kliknutí tlačítka štart sa budú postupne zobrazovať obrázky zvierat. <br/>
+        Ak sa nejaký obrázok opakuje, tak naň klikni ľavím tlačítkom myši. <br/>
+        Za každý zasiahnutý opakovaný obrázok máš bod.
+      </p>
+
+      <div style="text-align: center;"><strong>Pre začatie testu stlač tlačítko štart!</strong></div>
+    </div>
+
+    <div *ngIf="isShowResult">
+      <div style="text-align: center;">Výsledky</div>
+      <p style="text-align: center;">
+        Úspešnosť : {{(totalImagesRepeats != 0)?repeatsHited / totalImagesRepeats * 100 : 0}} %
+      </p>
+    </div>
+  </div>
+  <mat-progress-bar mode="determinate" [value]="progressBarValue" style="width: 600px; margin-top: 10px;"></mat-progress-bar>
+</div>
